@@ -1,17 +1,17 @@
-package ru.skaliush.lab5.app;
+package ru.skaliush.superlab.app;
 
-import ru.skaliush.lab5.commands.Command;
-import ru.skaliush.lab5.commands.ExitCommand;
-import ru.skaliush.lab5.commands.HelpCommand;
+import ru.skaliush.superlab.commands.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class CommandResolver {
-    private final List<Command> commands = new ArrayList<>() {{
-        add(new HelpCommand());
-        add(new ExitCommand());
-    }};
+    private final List<Command> commands = List.of(
+            new HelpCommand(),
+            new InfoCommand(),
+            new AddCommand(),
+            new ShowCommand(),
+            new ExitCommand()
+    );
 
     public boolean resolve(String request) {
         for (Command command : commands) {

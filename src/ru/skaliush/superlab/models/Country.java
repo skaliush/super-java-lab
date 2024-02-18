@@ -1,6 +1,6 @@
-package ru.skaliush.lab5.models;
+package ru.skaliush.superlab.models;
 
-enum Country {
+public enum Country {
     USA,
     CHINA,
     INDIA,

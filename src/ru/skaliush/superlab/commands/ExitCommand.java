@@ -1,6 +1,6 @@
-package ru.skaliush.lab5.commands;
+package ru.skaliush.superlab.commands;
 
-import ru.skaliush.lab5.app.StopProgramException;
+import ru.skaliush.superlab.app.StopProgramException;
 
 public class ExitCommand extends Command {
     public void exec() {
