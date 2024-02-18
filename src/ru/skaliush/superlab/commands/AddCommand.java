@@ -1,8 +1,8 @@
 package ru.skaliush.superlab.commands;
 
-import ru.skaliush.superlab.PersonDTO;
 import ru.skaliush.superlab.app.ResponseWriter;
 import ru.skaliush.superlab.collection.CollectionManager;
+import ru.skaliush.superlab.dto.PersonDTO;
 
 public class AddCommand extends Command {
     public void exec() {

@@ -1,10 +1,10 @@
 package ru.skaliush.superlab.commands;
 
-import ru.skaliush.superlab.PersonDTO;
 import ru.skaliush.superlab.app.AppContainer;
 import ru.skaliush.superlab.app.LineReader;
 import ru.skaliush.superlab.app.ResponseWriter;
 import ru.skaliush.superlab.app.StopProgramException;
+import ru.skaliush.superlab.dto.PersonDTO;
 import ru.skaliush.superlab.models.Color;
 import ru.skaliush.superlab.models.Country;
 import ru.skaliush.superlab.validation.ValidationException;

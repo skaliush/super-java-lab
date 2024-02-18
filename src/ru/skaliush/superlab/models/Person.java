@@ -1,6 +1,6 @@
 package ru.skaliush.superlab.models;
 
-import ru.skaliush.superlab.PersonDTO;
+import ru.skaliush.superlab.dto.PersonDTO;
 
 import java.time.ZonedDateTime;
 
