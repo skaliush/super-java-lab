@@ -1,4 +1,4 @@
-package ru.skaliush.superlab.dto;
+package ru.skaliush.superlab.models.dto;
 
 import ru.skaliush.superlab.models.Color;
 import ru.skaliush.superlab.models.Country;

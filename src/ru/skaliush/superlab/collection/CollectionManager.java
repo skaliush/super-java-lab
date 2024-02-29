@@ -1,7 +1,7 @@
 package ru.skaliush.superlab.collection;
 
-import ru.skaliush.superlab.dto.PersonDTO;
 import ru.skaliush.superlab.models.Person;
+import ru.skaliush.superlab.models.dto.PersonDTO;
 
 import java.util.Collection;
 import java.util.Collections;

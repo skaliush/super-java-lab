@@ -1,6 +1,6 @@
 package ru.skaliush.superlab.commands;
 
-import ru.skaliush.superlab.dto.PersonDTO;
+import ru.skaliush.superlab.models.dto.PersonDTO;
 
 public class UpdateCommand extends Command {
     public void exec() {
