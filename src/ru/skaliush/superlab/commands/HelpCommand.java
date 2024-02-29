@@ -1,7 +1,7 @@
 package ru.skaliush.superlab.commands;
 
-import ru.skaliush.superlab.app.CommandResolver;
 import ru.skaliush.superlab.app.ResponseWriter;
+import ru.skaliush.superlab.resolver.CommandResolver;
 
 import java.util.Map;
 

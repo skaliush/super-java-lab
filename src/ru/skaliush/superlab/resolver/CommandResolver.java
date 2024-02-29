@@ -1,6 +1,9 @@
-package ru.skaliush.superlab.app;
+package ru.skaliush.superlab.resolver;
 
 import ru.skaliush.superlab.commands.*;
+import ru.skaliush.superlab.resolver.exceptions.ArgumentMissedException;
+import ru.skaliush.superlab.resolver.exceptions.CommandNotFoundException;
+import ru.skaliush.superlab.resolver.exceptions.InvalidArgumentException;
 import ru.skaliush.superlab.validation.ValidationException;
 import ru.skaliush.superlab.validation.Validator;
 
@@ -12,6 +15,7 @@ public class CommandResolver {
             "info", new InfoCommand(),
             "add", new AddCommand(),
             "show", new ShowCommand(),
+            "execute_script", new ExecuteScriptCommand(),
             "save", new SaveCommand(),
             "update", new UpdateCommand(),
             "exit", new ExitCommand()
@@ -40,7 +44,7 @@ public class CommandResolver {
             }
             command.exec(argument);
         } else {
-            throw new CommandNotFoundException();
+            throw new CommandNotFoundException(commandAlias);
         }
     }
 

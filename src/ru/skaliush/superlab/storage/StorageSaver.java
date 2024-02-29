@@ -29,6 +29,5 @@ public class StorageSaver {
         }
         CsvWriter csvWriter = new CsvWriter();
         csvWriter.write(fileName, rows);
-        System.out.println("saved");
     }
 }

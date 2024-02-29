@@ -1,11 +1,16 @@
 package ru.skaliush.superlab.app;
 
+import ru.skaliush.superlab.resolver.CommandResolver;
+import ru.skaliush.superlab.resolver.exceptions.ArgumentMissedException;
+import ru.skaliush.superlab.resolver.exceptions.CommandNotFoundException;
+import ru.skaliush.superlab.resolver.exceptions.InvalidArgumentException;
+
 public class ConsoleRequestHandler {
     public void handle() {
         AppContainer app = AppContainer.getInstance();
         LineReader reader = app.getRequestReader();
         CommandResolver commandResolver = app.getCommandResolver();
-        System.out.println("Привет");
+        ResponseWriter.write("Привет");
         while (true) {
             try {
                 String request = reader.nextLine().trim().toLowerCase();
@@ -13,22 +18,22 @@ public class ConsoleRequestHandler {
                     try {
                         commandResolver.resolve(request);
                     } catch (CommandNotFoundException e) {
-                        System.out.println("404 Not found");
+                        ResponseWriter.write("404 Not found");
                     } catch (ArgumentMissedException e) {
-                        System.out.println("Пропущен обязательный аргумент " + e.getArgumentName());
+                        ResponseWriter.write("Пропущен обязательный аргумент " + e.getArgumentName());
                     } catch (InvalidArgumentException e) {
-                        System.out.println("Неверный формат аргумента " + e.getArgumentName() + ":");
+                        ResponseWriter.write("Неверный формат аргумента " + e.getArgumentName() + ":");
                         for (String errorMsg : e.getCause().getErrors()) {
-                            System.out.println(" • " + errorMsg);
+                            ResponseWriter.write(" • " + errorMsg);
                         }
                     }
                 } else {
-                    System.out.println("Введите нужную команду");
+                    ResponseWriter.write("Введите нужную команду");
                 }
             } catch (StopProgramException | EndOfLineException e) {
                 break;
             }
         }
-        System.out.println("Пока");
+        ResponseWriter.write("Пока");
     }
 }

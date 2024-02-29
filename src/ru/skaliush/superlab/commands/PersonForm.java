@@ -96,7 +96,7 @@ public class PersonForm {
                 Validator.validate(input, rules);
                 return input;
             } catch (ValidationException e) {
-                if (!appContainer.isInteractiveMode()) {
+                if (appContainer.isInteractiveMode()) {
                     throw new StopProgramException();
                 }
                 for (String errorMsg : e.getErrors()) {

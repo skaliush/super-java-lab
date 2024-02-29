@@ -1,6 +1,11 @@
 package ru.skaliush.superlab.app;
 
 import ru.skaliush.superlab.collection.CollectionManager;
+import ru.skaliush.superlab.resolver.CommandResolver;
+
+import java.io.File;
+import java.util.ArrayDeque;
+import java.util.Deque;
 
 public class AppContainer {
     private static AppContainer instance;
@@ -8,7 +13,8 @@ public class AppContainer {
     private CollectionManager collectionManager;
     private LineReader requestReader;
     private CommandResolver commandResolver;
-    private boolean isInteractiveMode = true;
+
+    private final Deque<File> scriptsStack = new ArrayDeque<>();
 
     private AppContainer() {
     }
@@ -36,19 +42,26 @@ public class AppContainer {
         this.requestReader = requestReader;
     }
 
-    public boolean isInteractiveMode() {
-        return isInteractiveMode;
-    }
-
-    public void setInteractiveMode(boolean mode) {
-        isInteractiveMode = mode;
-    }
-
     public CommandResolver getCommandResolver() {
         return commandResolver;
     }
 
     public void setCommandResolver(CommandResolver commandResolver) {
         this.commandResolver = commandResolver;
+    }
+
+    public Deque<File> getScriptsStack() {
+        return scriptsStack;
+    }
+
+    public File getCurrentScript() {
+        if (scriptsStack.isEmpty()) {
+            return null;
+        }
+        return scriptsStack.getLast();
+    }
+
+    public boolean isInteractiveMode() {
+        return !scriptsStack.isEmpty();
     }
 }

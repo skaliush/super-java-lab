@@ -1,8 +1,8 @@
-package ru.skaliush.superlab.app;
+package ru.skaliush.superlab.resolver.exceptions;
 
 import ru.skaliush.superlab.validation.ValidationException;
 
-public class InvalidArgumentException extends RuntimeException {
+public class InvalidArgumentException extends CommandResolverException {
     private final String argumentName;
     private final ValidationException cause;
 
@@ -18,5 +18,9 @@ public class InvalidArgumentException extends RuntimeException {
 
     public ValidationException getCause() {
         return cause;
+    }
+
+    public String getMessage() {
+        return "Неверный формат аргумента " + argumentName;
     }
 }

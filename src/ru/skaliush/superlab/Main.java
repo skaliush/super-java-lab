@@ -1,10 +1,10 @@
 package ru.skaliush.superlab;
 
 import ru.skaliush.superlab.app.AppContainer;
-import ru.skaliush.superlab.app.CommandResolver;
 import ru.skaliush.superlab.app.ConsoleRequestHandler;
 import ru.skaliush.superlab.app.LineReader;
 import ru.skaliush.superlab.collection.CollectionManager;
+import ru.skaliush.superlab.resolver.CommandResolver;
 
 public class Main {
     public static void main(String[] args) {
