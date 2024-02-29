@@ -3,16 +3,16 @@ package ru.skaliush.superlab.collection;
 import ru.skaliush.superlab.dto.PersonDTO;
 import ru.skaliush.superlab.models.Person;
 
+import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
-import java.util.Set;
 
 public class CollectionManager {
-    private final Set<Person> collection = new HashSet<>();
+    private final Collection<Person> collection = new HashSet<>();
 
     private long lastId = 0;
 
-    public Set<Person> getCollection() {
+    public Collection<Person> getCollection() {
         return new HashSet<>(collection);
     }
 
@@ -56,5 +56,9 @@ public class CollectionManager {
 
     private Long generateId() {
         return ++lastId;
+    }
+
+    public void setLastId(long lastId) {
+        this.lastId = lastId;
     }
 }

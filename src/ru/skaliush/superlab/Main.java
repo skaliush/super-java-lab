@@ -17,7 +17,7 @@ public class Main {
         AppContainer app = AppContainer.getInstance();
         CollectionManager collectionManager = new CollectionManager();
         app.setCollectionManager(collectionManager);
-        LineReader lineReader = new LineReader(System.in);
+        LineReader lineReader = new LineReader(System.in, true);
         app.setRequestReader(lineReader);
         CommandResolver commandResolver = new CommandResolver();
         app.setCommandResolver(commandResolver);

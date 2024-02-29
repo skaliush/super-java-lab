@@ -7,6 +7,7 @@ import ru.skaliush.superlab.app.StopProgramException;
 import ru.skaliush.superlab.dto.PersonDTO;
 import ru.skaliush.superlab.models.Color;
 import ru.skaliush.superlab.models.Country;
+import ru.skaliush.superlab.models.Location;
 import ru.skaliush.superlab.validation.ValidationException;
 import ru.skaliush.superlab.validation.Validator;
 import ru.skaliush.superlab.validation.rules.*;
@@ -21,6 +22,7 @@ public class PersonForm {
         askHairColor(personDto);
         askEyeColor(personDto);
         askNationality(personDto);
+        personDto.setLocation(new Location(1, 2, 3));
         return personDto;
     }
 

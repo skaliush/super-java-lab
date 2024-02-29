@@ -32,6 +32,10 @@ public class PersonDTO {
         this.nationality = nationality;
     }
 
+    public void setLocation(Location location) {
+        this.location = location;
+    }
+
     public String getName() {
         return name;
     }

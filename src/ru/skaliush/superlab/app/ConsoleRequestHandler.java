@@ -17,7 +17,7 @@ public class ConsoleRequestHandler {
                 } else {
                     System.out.println("Введите нужную команду");
                 }
-            } catch (StopProgramException e) {
+            } catch (StopProgramException | EndOfLineException e) {
                 break;
             }
         }

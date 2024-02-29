@@ -5,9 +5,9 @@ import ru.skaliush.superlab.dto.PersonDTO;
 import java.time.ZonedDateTime;
 
 public class Person implements Comparable<Person> {
-    private final Long id; // Значение этого поля должно быть уникальным, Значение этого поля должно генерироваться автоматически
+    private final Long id;
     private final String name;
-    private final ZonedDateTime creationDate; // Значение этого поля должно генерироваться автоматически
+    private final ZonedDateTime creationDate;
     private final Integer height;
     private final Color eyeColor;
     private final Color hairColor;
@@ -17,6 +17,17 @@ public class Person implements Comparable<Person> {
     public Person(Long id, PersonDTO form) {
         this.id = id;
         this.creationDate = ZonedDateTime.now();
+        this.name = form.getName();
+        this.height = form.getHeight();
+        this.eyeColor = form.getEyeColor();
+        this.hairColor = form.getHairColor();
+        this.nationality = form.getNationality();
+        this.location = form.getLocation();
+    }
+
+    public Person(Long id, PersonDTO form, ZonedDateTime creationDate) {
+        this.id = id;
+        this.creationDate = creationDate;
         this.name = form.getName();
         this.height = form.getHeight();
         this.eyeColor = form.getEyeColor();

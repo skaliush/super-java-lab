@@ -10,7 +10,8 @@ public class CommandResolver {
             new InfoCommand(),
             new AddCommand(),
             new ShowCommand(),
-            new ExitCommand()
+            new ExitCommand(),
+            new SaveCommand()
     );
 
     public boolean resolve(String request) {

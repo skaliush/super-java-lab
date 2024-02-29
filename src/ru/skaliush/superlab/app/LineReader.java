@@ -8,20 +8,35 @@ public class LineReader {
     private final InputStreamReader inputStreamReader;
 
     private Integer cachedCharCode = null;
+    private boolean exceptionOnEOL = false;
 
     public LineReader(InputStream inputStream) {
         inputStreamReader = new InputStreamReader(inputStream);
     }
 
+    public LineReader(InputStream inputStream, boolean exceptionOnEOL) {
+        inputStreamReader = new InputStreamReader(inputStream);
+        this.exceptionOnEOL = exceptionOnEOL;
+    }
+
     public String nextLine() {
         StringBuilder builder = new StringBuilder();
-        while (true) {
-            int charCode = cachedCharCode != null ? cachedCharCode : readCharCode();
+        if (cachedCharCode != null) {
+            builder.append((char) cachedCharCode.intValue());
             cachedCharCode = null;
+        }
+        while (true) {
+            int charCode = readCharCode();
             if (charCode == -1) {
-                throw new StopProgramException();
-            }
-            if (charCode == '\r' || charCode == '\n') {
+                if (exceptionOnEOL) {
+                    throw new EndOfLineException();
+                } else {
+                    break;
+                }
+            } else if (charCode == '\n') {
+                break;
+            } else if (charCode == '\r') {
+                readCharCode(); // for crlf
                 break;
             }
             builder.append((char) charCode);
@@ -30,6 +45,9 @@ public class LineReader {
     }
 
     public boolean hasNextLine() {
+        if (cachedCharCode != null) {
+            return true;
+        }
         int charCode = readCharCode();
         if (charCode == -1) {
             return false;
