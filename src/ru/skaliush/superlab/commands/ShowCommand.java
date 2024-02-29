@@ -6,7 +6,7 @@ import ru.skaliush.superlab.models.Person;
 import java.util.Collection;
 
 public class ShowCommand extends Command {
-    public void exec() {
+    public void exec(String argument) {
         Collection<Person> collection = this.app.getCollectionManager().getCollection();
         if (collection.isEmpty()) {
             ResponseWriter.write("Коллекция пуста");
@@ -21,7 +21,4 @@ public class ShowCommand extends Command {
         return "вывести все элементы коллекции";
     }
 
-    public String getAlias() {
-        return "show";
-    }
 }

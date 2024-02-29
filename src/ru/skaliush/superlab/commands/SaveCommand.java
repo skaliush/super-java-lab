@@ -3,7 +3,7 @@ package ru.skaliush.superlab.commands;
 import ru.skaliush.superlab.storage.StorageSaver;
 
 public class SaveCommand extends Command {
-    public void exec() {
+    public void exec(String argument) {
         StorageSaver storageSaver = new StorageSaver();
         storageSaver.save(this.app.getCollectionManager().getCollection());
     }
@@ -12,7 +12,4 @@ public class SaveCommand extends Command {
         return "save collection";
     }
 
-    public String getAlias() {
-        return "save";
-    }
 }

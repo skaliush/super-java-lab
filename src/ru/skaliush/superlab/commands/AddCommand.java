@@ -5,7 +5,7 @@ import ru.skaliush.superlab.collection.CollectionManager;
 import ru.skaliush.superlab.models.dto.PersonDTO;
 
 public class AddCommand extends Command {
-    public void exec() {
+    public void exec(String argument) {
         PersonForm form = new PersonForm();
         PersonDTO personDto = form.askPerson();
         ResponseWriter.write(personDto);
@@ -17,7 +17,4 @@ public class AddCommand extends Command {
         return "добавить новый элемент в коллекцию";
     }
 
-    public String getAlias() {
-        return "add";
-    }
 }

@@ -3,17 +3,21 @@ package ru.skaliush.superlab.commands;
 import ru.skaliush.superlab.app.CommandResolver;
 import ru.skaliush.superlab.app.ResponseWriter;
 
+import java.util.Map;
+
 public class HelpCommand extends Command {
-    public void exec() {
+    public void exec(String argument) {
         CommandResolver commandResolver = this.app.getCommandResolver();
         ResponseWriter.write("Список доступных команд:");
-        for (Command command : commandResolver.getCommands()) {
-            ResponseWriter.write(" • " + command.getAlias() + " - " + command.getDescription());
+        for (Map.Entry<String, Command> commandEntry : commandResolver.getCommands().entrySet()) {
+            Command command = commandEntry.getValue();
+            String output = " • " + commandEntry.getKey();
+            if (command.getArgumentName() != null) {
+                output += " {" + command.getArgumentName() + "}";
+            }
+            output += " - " + command.getDescription();
+            ResponseWriter.write(output);
         }
-    }
-
-    public String getAlias() {
-        return "help";
     }
 
     public String getDescription() {

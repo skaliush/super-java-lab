@@ -10,9 +10,17 @@ public class ConsoleRequestHandler {
             try {
                 String request = reader.nextLine().trim().toLowerCase();
                 if (!request.equals("")) {
-                    boolean resolved = commandResolver.resolve(request);
-                    if (!resolved) {
+                    try {
+                        commandResolver.resolve(request);
+                    } catch (CommandNotFoundException e) {
                         System.out.println("404 Not found");
+                    } catch (ArgumentMissedException e) {
+                        System.out.println("Пропущен обязательный аргумент " + e.getArgumentName());
+                    } catch (InvalidArgumentException e) {
+                        System.out.println("Неверный формат аргумента " + e.getArgumentName() + ":");
+                        for (String errorMsg : e.getCause().getErrors()) {
+                            System.out.println(" • " + errorMsg);
+                        }
                     }
                 } else {
                     System.out.println("Введите нужную команду");
