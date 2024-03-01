@@ -17,6 +17,7 @@ public class UpdateCommand extends Command {
         ResponseWriter.write(personDto);
         CollectionManager collectionManager = this.app.getCollectionManager();
         collectionManager.updatePersonById(id, personDto);
+        // что если такого ID нет?
     }
 
     public String getDescription() {

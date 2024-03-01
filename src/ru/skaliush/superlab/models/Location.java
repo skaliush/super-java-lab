@@ -1,31 +1,31 @@
 package ru.skaliush.superlab.models;
 
 public class Location {
-    private float x; //Поле не может быть null
-    private float y; //Поле не может быть null
-    private float z; //Поле не может быть null
-    private String name; //Строка не может быть пустой, Поле может быть null
+    private Float x;
+    private Float y;
+    private Float z;
+    private String name;
 
-    public Location(float x, float y, float z) {
+    public Location(Float x, Float y, Float z) {
         this.x = x;
         this.y = y;
         this.z = z;
     }
 
-    public Location(float x, float y, float z, String name) {
+    public Location(Float x, Float y, Float z, String name) {
         this(x, y, z);
         this.name = name;
     }
 
-    public float getX() {
+    public Float getX() {
         return x;
     }
 
-    public float getY() {
+    public Float getY() {
         return y;
     }
 
-    public float getZ() {
+    public Float getZ() {
         return z;
     }
 
@@ -33,15 +33,15 @@ public class Location {
         return name;
     }
 
-    public void setX(float x) {
+    public void setX(Float x) {
         this.x = x;
     }
 
-    public void setY(float y) {
+    public void setY(Float y) {
         this.y = y;
     }
 
-    public void setZ(float z) {
+    public void setZ(Float z) {
         this.z = z;
     }
 

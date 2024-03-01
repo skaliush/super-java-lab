@@ -21,7 +21,10 @@ public class CsvWriter {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName))) {
             for (Row row : rows) {
                 StringBuilder line = new StringBuilder();
-                for (String cell : row.content()) {
+                for (String cell : row.cells()) {
+                    if (cell == null) {
+                        cell = "";
+                    }
                     if (!line.isEmpty()) {
                         line.append(delimiter);
                     }

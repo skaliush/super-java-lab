@@ -8,9 +8,20 @@ import java.util.Collections;
 import java.util.HashSet;
 
 public class CollectionManager {
-    private final Collection<Person> collection = new HashSet<>();
+    private final Collection<Person> collection;
 
     private long lastId = 0;
+
+    public CollectionManager() {
+        this.collection = new HashSet<>();
+    }
+
+    public CollectionManager(Collection<Person> collection) {
+        this.collection = collection;
+        for (Person person : collection) {
+            lastId = Long.max(lastId, person.getId());
+        }
+    }
 
     public Collection<Person> getCollection() {
         return new HashSet<>(collection);

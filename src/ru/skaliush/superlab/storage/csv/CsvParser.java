@@ -74,7 +74,7 @@ public class CsvParser {
                         } else {
                             rowValues.add(cell.toString());
                             cell = new StringBuilder();
-                            continue;
+                            // continue;
                         }
                     } else {
                         cell.append(symbol);
