@@ -29,7 +29,7 @@ public class LineReader {
             int charCode = readCharCode();
             if (charCode == -1) {
                 if (exceptionOnEOL) {
-                    throw new EndOfLineException();
+                    throw new EndOfFileException();
                 } else {
                     break;
                 }

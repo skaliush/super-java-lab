@@ -1,6 +1,6 @@
 package ru.skaliush.superlab.storage.csv;
 
-import ru.skaliush.superlab.app.EndOfLineException;
+import ru.skaliush.superlab.app.EndOfFileException;
 import ru.skaliush.superlab.app.LineReader;
 
 import java.io.File;
@@ -37,7 +37,7 @@ public class CsvParser {
                 String line;
                 try {
                     line = lineReader.nextLine().trim();
-                } catch (EndOfLineException e) {
+                } catch (EndOfFileException e) {
                     break;
                 }
                 if (line.equals("")) {

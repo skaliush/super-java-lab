@@ -30,7 +30,7 @@ public class ConsoleRequestHandler {
                 } else {
                     ResponseWriter.write("Введите нужную команду");
                 }
-            } catch (StopProgramException | EndOfLineException e) {
+            } catch (StopProgramException | EndOfFileException e) {
                 break;
             }
         }

@@ -1,2 +1,5 @@
 id,name,creationDate,height,eyeColor,hairColor,nationality,location_name,location_x,location_y,location_z
+3,0,2024-03-01T17:29:33.964221700+03:00[Europe/Moscow],1,WHITE,ORANGE,JAPAN,,,,
 1,1,2024-03-01T12:11:16.206841100+03:00[Europe/Moscow],2,BROWN,WHITE,CHINA,qwe,1.0,2.0,3.0
+2,0,2024-03-01T17:29:01.882857900+03:00[Europe/Moscow],1,WHITE,ORANGE,JAPAN,,,,
+4,"qwe qw",2024-03-01T17:30:59.509882+03:00[Europe/Moscow],123,ORANGE,YELLOW,INDIA,,1.2,-3.43242342E9,1.0

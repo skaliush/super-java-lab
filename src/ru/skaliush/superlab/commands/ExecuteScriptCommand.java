@@ -1,6 +1,6 @@
 package ru.skaliush.superlab.commands;
 
-import ru.skaliush.superlab.app.EndOfLineException;
+import ru.skaliush.superlab.app.EndOfFileException;
 import ru.skaliush.superlab.app.LineReader;
 import ru.skaliush.superlab.app.ResponseWriter;
 import ru.skaliush.superlab.app.StopProgramException;
@@ -37,7 +37,7 @@ public class ExecuteScriptCommand extends Command {
                             break;
                         }
                     }
-                } catch (StopProgramException | EndOfLineException e) {
+                } catch (StopProgramException | EndOfFileException e) {
                     break;
                 }
             }
