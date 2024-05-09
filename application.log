@@ -1,0 +1,73 @@
+24-05-09 19:09:34:795 INFO  server:35 - [Server] start
+24-05-09 19:10:20:910 INFO  server:35 - [Server] start
+24-05-09 19:11:07:520 INFO  server:43 - [Server] the client has connected
+24-05-09 19:11:07:540 INFO  server:46 - [Server] client request:
+24-05-09 19:11:07:541 INFO  server:47 -     Request{actionAlias=SHOW, data=null}
+24-05-09 19:11:07:549 INFO  server:50 - [Server] server response:
+24-05-09 19:11:07:560 INFO  server:51 -     Response{request=Request{actionAlias=SHOW, data=null}, data=[Person{id=4, name='qwe qw', creationDate=2024-03-01T17:30:59.509882+03:00[Europe/Moscow], height=123, eyeColor=ORANGE, hairColor=YELLOW, nationality=INDIA, location=Location{x=1.2, y=-3.43242342E9, z=1.0, name=null}}, Person{id=6, name='0', creationDate=2024-05-09T17:07:39.869488700+03:00[Europe/Moscow], height=1, eyeColor=WHITE, hairColor=ORANGE, nationality=JAPAN, location=null}, Person{id=1, name='1', creationDate=2024-03-01T12:11:16.206841100+03:00[Europe/Moscow], height=2, eyeColor=BROWN, hairColor=WHITE, nationality=CHINA, location=Location{x=1.0, y=2.0, z=3.0, name='qwe'}}]}
+24-05-09 19:11:13:471 INFO  server:43 - [Server] the client has connected
+24-05-09 19:11:13:472 INFO  server:46 - [Server] client request:
+24-05-09 19:11:13:472 INFO  server:47 -     Request{actionAlias=SHOW, data=null}
+24-05-09 19:11:13:473 INFO  server:50 - [Server] server response:
+24-05-09 19:11:13:473 INFO  server:51 -     Response{request=Request{actionAlias=SHOW, data=null}, data=[Person{id=4, name='qwe qw', creationDate=2024-03-01T17:30:59.509882+03:00[Europe/Moscow], height=123, eyeColor=ORANGE, hairColor=YELLOW, nationality=INDIA, location=Location{x=1.2, y=-3.43242342E9, z=1.0, name=null}}, Person{id=6, name='0', creationDate=2024-05-09T17:07:39.869488700+03:00[Europe/Moscow], height=1, eyeColor=WHITE, hairColor=ORANGE, nationality=JAPAN, location=null}, Person{id=1, name='1', creationDate=2024-03-01T12:11:16.206841100+03:00[Europe/Moscow], height=2, eyeColor=BROWN, hairColor=WHITE, nationality=CHINA, location=Location{x=1.0, y=2.0, z=3.0, name='qwe'}}]}
+24-05-09 19:13:52:616 INFO  server:34 - [Server] start
+24-05-09 19:13:56:508 INFO  server:58 - [Server] the client has connected
+24-05-09 19:13:56:530 INFO  server:61 - [Server] client request:
+24-05-09 19:13:56:531 INFO  server:62 -     Request{actionAlias=SHOW, data=null}
+24-05-09 19:13:56:540 INFO  server:65 - [Server] server response:
+24-05-09 19:13:56:551 INFO  server:66 -     Response{request=Request{actionAlias=SHOW, data=null}, data=[Person{id=4, name='qwe qw', creationDate=2024-03-01T17:30:59.509882+03:00[Europe/Moscow], height=123, eyeColor=ORANGE, hairColor=YELLOW, nationality=INDIA, location=Location{x=1.2, y=-3.43242342E9, z=1.0, name=null}}, Person{id=6, name='0', creationDate=2024-05-09T17:07:39.869488700+03:00[Europe/Moscow], height=1, eyeColor=WHITE, hairColor=ORANGE, nationality=JAPAN, location=null}, Person{id=1, name='1', creationDate=2024-03-01T12:11:16.206841100+03:00[Europe/Moscow], height=2, eyeColor=BROWN, hairColor=WHITE, nationality=CHINA, location=Location{x=1.0, y=2.0, z=3.0, name='qwe'}}]}
+24-05-09 19:15:43:417 INFO  server:34 - [Server] start
+24-05-09 19:15:47:814 INFO  server:59 - [Server] the client has connected
+24-05-09 19:15:47:835 INFO  server:62 - [Server] client request:
+24-05-09 19:15:47:836 INFO  server:63 -     Request{actionAlias=SHOW, data=null}
+24-05-09 19:15:47:844 INFO  server:66 - [Server] server response:
+24-05-09 19:15:47:856 INFO  server:67 -     Response{request=Request{actionAlias=SHOW, data=null}, data=[Person{id=1, name='1', creationDate=2024-03-01T12:11:16.206841100+03:00[Europe/Moscow], height=2, eyeColor=BROWN, hairColor=WHITE, nationality=CHINA, location=Location{x=1.0, y=2.0, z=3.0, name='qwe'}}, Person{id=4, name='qwe qw', creationDate=2024-03-01T17:30:59.509882+03:00[Europe/Moscow], height=123, eyeColor=ORANGE, hairColor=YELLOW, nationality=INDIA, location=Location{x=1.2, y=-3.43242342E9, z=1.0, name=null}}, Person{id=6, name='0', creationDate=2024-05-09T17:07:39.869488700+03:00[Europe/Moscow], height=1, eyeColor=WHITE, hairColor=ORANGE, nationality=JAPAN, location=null}]}
+24-05-09 19:16:08:283 INFO  server:34 - [Server] start
+24-05-09 19:16:10:692 INFO  server:60 - [Server] the client has connected
+24-05-09 19:16:10:712 INFO  server:63 - [Server] client request:
+24-05-09 19:16:10:712 INFO  server:64 -     Request{actionAlias=SHOW, data=null}
+24-05-09 19:16:10:722 INFO  server:67 - [Server] server response:
+24-05-09 19:16:10:735 INFO  server:68 -     Response{request=Request{actionAlias=SHOW, data=null}, data=[Person{id=4, name='qwe qw', creationDate=2024-03-01T17:30:59.509882+03:00[Europe/Moscow], height=123, eyeColor=ORANGE, hairColor=YELLOW, nationality=INDIA, location=Location{x=1.2, y=-3.43242342E9, z=1.0, name=null}}, Person{id=6, name='0', creationDate=2024-05-09T17:07:39.869488700+03:00[Europe/Moscow], height=1, eyeColor=WHITE, hairColor=ORANGE, nationality=JAPAN, location=null}, Person{id=1, name='1', creationDate=2024-03-01T12:11:16.206841100+03:00[Europe/Moscow], height=2, eyeColor=BROWN, hairColor=WHITE, nationality=CHINA, location=Location{x=1.0, y=2.0, z=3.0, name='qwe'}}]}
+24-05-09 19:16:44:162 INFO  server:34 - [Server] start
+24-05-09 19:16:45:390 INFO  server:59 - [Server] the client has connected
+24-05-09 19:16:45:408 INFO  server:62 - [Server] client request:
+24-05-09 19:16:45:409 INFO  server:63 -     Request{actionAlias=SHOW, data=null}
+24-05-09 19:16:45:418 INFO  server:66 - [Server] server response:
+24-05-09 19:16:45:427 INFO  server:67 -     Response{request=Request{actionAlias=SHOW, data=null}, data=[Person{id=4, name='qwe qw', creationDate=2024-03-01T17:30:59.509882+03:00[Europe/Moscow], height=123, eyeColor=ORANGE, hairColor=YELLOW, nationality=INDIA, location=Location{x=1.2, y=-3.43242342E9, z=1.0, name=null}}, Person{id=1, name='1', creationDate=2024-03-01T12:11:16.206841100+03:00[Europe/Moscow], height=2, eyeColor=BROWN, hairColor=WHITE, nationality=CHINA, location=Location{x=1.0, y=2.0, z=3.0, name='qwe'}}, Person{id=6, name='0', creationDate=2024-05-09T17:07:39.869488700+03:00[Europe/Moscow], height=1, eyeColor=WHITE, hairColor=ORANGE, nationality=JAPAN, location=null}]}
+24-05-09 19:16:57:659 INFO  server:34 - [Server] start
+24-05-09 19:17:00:036 INFO  server:59 - [Server] the client has connected
+24-05-09 19:17:00:056 INFO  server:62 - [Server] client request:
+24-05-09 19:17:00:057 INFO  server:63 -     Request{actionAlias=SHOW, data=null}
+24-05-09 19:17:00:065 INFO  server:66 - [Server] server response:
+24-05-09 19:17:00:076 INFO  server:67 -     Response{request=Request{actionAlias=SHOW, data=null}, data=[Person{id=4, name='qwe qw', creationDate=2024-03-01T17:30:59.509882+03:00[Europe/Moscow], height=123, eyeColor=ORANGE, hairColor=YELLOW, nationality=INDIA, location=Location{x=1.2, y=-3.43242342E9, z=1.0, name=null}}, Person{id=6, name='0', creationDate=2024-05-09T17:07:39.869488700+03:00[Europe/Moscow], height=1, eyeColor=WHITE, hairColor=ORANGE, nationality=JAPAN, location=null}, Person{id=1, name='1', creationDate=2024-03-01T12:11:16.206841100+03:00[Europe/Moscow], height=2, eyeColor=BROWN, hairColor=WHITE, nationality=CHINA, location=Location{x=1.0, y=2.0, z=3.0, name='qwe'}}]}
+24-05-09 19:17:09:248 INFO  server:59 - [Server] the client has connected
+24-05-09 19:17:09:249 INFO  server:62 - [Server] client request:
+24-05-09 19:17:09:249 INFO  server:63 -     Request{actionAlias=SHOW, data=null}
+24-05-09 19:17:09:250 INFO  server:66 - [Server] server response:
+24-05-09 19:17:09:250 INFO  server:67 -     Response{request=Request{actionAlias=SHOW, data=null}, data=[Person{id=4, name='qwe qw', creationDate=2024-03-01T17:30:59.509882+03:00[Europe/Moscow], height=123, eyeColor=ORANGE, hairColor=YELLOW, nationality=INDIA, location=Location{x=1.2, y=-3.43242342E9, z=1.0, name=null}}, Person{id=6, name='0', creationDate=2024-05-09T17:07:39.869488700+03:00[Europe/Moscow], height=1, eyeColor=WHITE, hairColor=ORANGE, nationality=JAPAN, location=null}, Person{id=1, name='1', creationDate=2024-03-01T12:11:16.206841100+03:00[Europe/Moscow], height=2, eyeColor=BROWN, hairColor=WHITE, nationality=CHINA, location=Location{x=1.0, y=2.0, z=3.0, name='qwe'}}]}
+24-05-09 19:17:14:421 INFO  server:59 - [Server] the client has connected
+24-05-09 19:17:14:446 INFO  server:62 - [Server] client request:
+24-05-09 19:17:14:446 INFO  server:63 -     Request{actionAlias=SHOW, data=null}
+24-05-09 19:17:14:447 INFO  server:66 - [Server] server response:
+24-05-09 19:17:14:447 INFO  server:67 -     Response{request=Request{actionAlias=SHOW, data=null}, data=[Person{id=4, name='qwe qw', creationDate=2024-03-01T17:30:59.509882+03:00[Europe/Moscow], height=123, eyeColor=ORANGE, hairColor=YELLOW, nationality=INDIA, location=Location{x=1.2, y=-3.43242342E9, z=1.0, name=null}}, Person{id=6, name='0', creationDate=2024-05-09T17:07:39.869488700+03:00[Europe/Moscow], height=1, eyeColor=WHITE, hairColor=ORANGE, nationality=JAPAN, location=null}, Person{id=1, name='1', creationDate=2024-03-01T12:11:16.206841100+03:00[Europe/Moscow], height=2, eyeColor=BROWN, hairColor=WHITE, nationality=CHINA, location=Location{x=1.0, y=2.0, z=3.0, name='qwe'}}]}
+24-05-09 19:17:27:828 INFO  server:59 - [Server] the client has connected
+24-05-09 19:17:27:828 INFO  server:62 - [Server] client request:
+24-05-09 19:17:27:829 INFO  server:63 -     Request{actionAlias=SHOW, data=null}
+24-05-09 19:17:27:830 INFO  server:66 - [Server] server response:
+24-05-09 19:17:27:830 INFO  server:67 -     Response{request=Request{actionAlias=SHOW, data=null}, data=[Person{id=4, name='qwe qw', creationDate=2024-03-01T17:30:59.509882+03:00[Europe/Moscow], height=123, eyeColor=ORANGE, hairColor=YELLOW, nationality=INDIA, location=Location{x=1.2, y=-3.43242342E9, z=1.0, name=null}}, Person{id=6, name='0', creationDate=2024-05-09T17:07:39.869488700+03:00[Europe/Moscow], height=1, eyeColor=WHITE, hairColor=ORANGE, nationality=JAPAN, location=null}, Person{id=1, name='1', creationDate=2024-03-01T12:11:16.206841100+03:00[Europe/Moscow], height=2, eyeColor=BROWN, hairColor=WHITE, nationality=CHINA, location=Location{x=1.0, y=2.0, z=3.0, name='qwe'}}]}
+24-05-09 19:17:30:876 INFO  server:59 - [Server] the client has connected
+24-05-09 19:17:30:876 INFO  server:62 - [Server] client request:
+24-05-09 19:17:30:877 INFO  server:63 -     Request{actionAlias=SHOW, data=null}
+24-05-09 19:17:30:877 INFO  server:66 - [Server] server response:
+24-05-09 19:17:30:878 INFO  server:67 -     Response{request=Request{actionAlias=SHOW, data=null}, data=[Person{id=4, name='qwe qw', creationDate=2024-03-01T17:30:59.509882+03:00[Europe/Moscow], height=123, eyeColor=ORANGE, hairColor=YELLOW, nationality=INDIA, location=Location{x=1.2, y=-3.43242342E9, z=1.0, name=null}}, Person{id=6, name='0', creationDate=2024-05-09T17:07:39.869488700+03:00[Europe/Moscow], height=1, eyeColor=WHITE, hairColor=ORANGE, nationality=JAPAN, location=null}, Person{id=1, name='1', creationDate=2024-03-01T12:11:16.206841100+03:00[Europe/Moscow], height=2, eyeColor=BROWN, hairColor=WHITE, nationality=CHINA, location=Location{x=1.0, y=2.0, z=3.0, name='qwe'}}]}
+24-05-09 19:17:33:702 INFO  server:59 - [Server] the client has connected
+24-05-09 19:17:33:703 INFO  server:62 - [Server] client request:
+24-05-09 19:17:33:703 INFO  server:63 -     Request{actionAlias=SHOW, data=null}
+24-05-09 19:17:33:704 INFO  server:66 - [Server] server response:
+24-05-09 19:17:33:704 INFO  server:67 -     Response{request=Request{actionAlias=SHOW, data=null}, data=[Person{id=4, name='qwe qw', creationDate=2024-03-01T17:30:59.509882+03:00[Europe/Moscow], height=123, eyeColor=ORANGE, hairColor=YELLOW, nationality=INDIA, location=Location{x=1.2, y=-3.43242342E9, z=1.0, name=null}}, Person{id=6, name='0', creationDate=2024-05-09T17:07:39.869488700+03:00[Europe/Moscow], height=1, eyeColor=WHITE, hairColor=ORANGE, nationality=JAPAN, location=null}, Person{id=1, name='1', creationDate=2024-03-01T12:11:16.206841100+03:00[Europe/Moscow], height=2, eyeColor=BROWN, hairColor=WHITE, nationality=CHINA, location=Location{x=1.0, y=2.0, z=3.0, name='qwe'}}]}
+24-05-09 19:19:58:567 INFO  server:36 - [Server] start
+24-05-09 19:19:59:805 INFO  server:46 - [Server] the client has connected. IP: 127.0.0.1:2332
+24-05-09 19:19:59:824 INFO  server:49 - [Server] client request:
+24-05-09 19:19:59:825 INFO  server:50 -     Request{actionAlias=SHOW, data=null}
+24-05-09 19:19:59:833 INFO  server:53 - [Server] server response:
+24-05-09 19:19:59:843 INFO  server:54 -     Response{request=Request{actionAlias=SHOW, data=null}, data=[Person{id=4, name='qwe qw', creationDate=2024-03-01T17:30:59.509882+03:00[Europe/Moscow], height=123, eyeColor=ORANGE, hairColor=YELLOW, nationality=INDIA, location=Location{x=1.2, y=-3.43242342E9, z=1.0, name=null}}, Person{id=6, name='0', creationDate=2024-05-09T17:07:39.869488700+03:00[Europe/Moscow], height=1, eyeColor=WHITE, hairColor=ORANGE, nationality=JAPAN, location=null}, Person{id=1, name='1', creationDate=2024-03-01T12:11:16.206841100+03:00[Europe/Moscow], height=2, eyeColor=BROWN, hairColor=WHITE, nationality=CHINA, location=Location{x=1.0, y=2.0, z=3.0, name='qwe'}}]}
