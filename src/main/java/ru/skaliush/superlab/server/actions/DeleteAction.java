@@ -1,6 +1,6 @@
 package ru.skaliush.superlab.server.actions;
 
-import ru.skaliush.superlab.common.request.Request;
+import ru.skaliush.superlab.common.network.Request;
 
 public class DeleteAction extends Action<Boolean> {
     public Boolean execute(Request request) {

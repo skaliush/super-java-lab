@@ -4,7 +4,7 @@ import ru.skaliush.superlab.client.app.ClientAppContainer;
 import ru.skaliush.superlab.client.app.ConsolePromptHandler;
 import ru.skaliush.superlab.client.app.LineReader;
 import ru.skaliush.superlab.client.resolver.CommandResolver;
-import ru.skaliush.superlab.common.request.RequestSender;
+import ru.skaliush.superlab.common.network.RequestSender;
 
 public class ClientMain {
     public static void main(String[] args) {

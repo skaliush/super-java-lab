@@ -1,9 +1,9 @@
 package ru.skaliush.superlab.client.commands;
 
 import ru.skaliush.superlab.client.app.ResponseWriter;
-import ru.skaliush.superlab.common.request.ActionAlias;
-import ru.skaliush.superlab.common.request.Request;
-import ru.skaliush.superlab.common.request.Response;
+import ru.skaliush.superlab.common.network.ActionAlias;
+import ru.skaliush.superlab.common.network.Request;
+import ru.skaliush.superlab.common.network.Response;
 
 public class ClearCommand extends Command {
     public void exec(String argument) {

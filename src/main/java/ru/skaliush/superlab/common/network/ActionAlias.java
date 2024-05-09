@@ -1,4 +1,4 @@
-package ru.skaliush.superlab.common.request;
+package ru.skaliush.superlab.common.network;
 
 public enum ActionAlias {
     INFO,

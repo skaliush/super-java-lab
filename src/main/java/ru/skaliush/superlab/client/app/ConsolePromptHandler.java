@@ -4,6 +4,7 @@ import ru.skaliush.superlab.client.resolver.CommandResolver;
 import ru.skaliush.superlab.client.resolver.exceptions.ArgumentMissedException;
 import ru.skaliush.superlab.client.resolver.exceptions.CommandNotFoundException;
 import ru.skaliush.superlab.client.resolver.exceptions.InvalidArgumentException;
+import ru.skaliush.superlab.common.network.ServerUnavailableException;
 
 public class ConsolePromptHandler {
     public void handle() {
@@ -26,6 +27,8 @@ public class ConsolePromptHandler {
                         for (String errorMsg : e.getCause().getErrors()) {
                             ResponseWriter.write(" • " + errorMsg);
                         }
+                    } catch (ServerUnavailableException e) {
+                        ResponseWriter.write("На данный момент сервер недоступен. Попробуйте позже.");
                     }
                 } else {
                     ResponseWriter.write("Введите нужную команду");

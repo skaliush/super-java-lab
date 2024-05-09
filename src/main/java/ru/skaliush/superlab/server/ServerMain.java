@@ -3,9 +3,9 @@ package ru.skaliush.superlab.server;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import ru.skaliush.superlab.common.models.Person;
-import ru.skaliush.superlab.common.request.Request;
-import ru.skaliush.superlab.common.request.Response;
-import ru.skaliush.superlab.common.request.Serializer;
+import ru.skaliush.superlab.common.network.Request;
+import ru.skaliush.superlab.common.network.Response;
+import ru.skaliush.superlab.common.network.Serializer;
 import ru.skaliush.superlab.server.app.Router;
 import ru.skaliush.superlab.server.app.ServerAppContainer;
 import ru.skaliush.superlab.server.collection.CollectionManager;
@@ -63,13 +63,13 @@ public class ServerMain {
     private static void initAppContainer() {
         ServerAppContainer appContainer = ServerAppContainer.getInstance();
 
+        StorageSaver storageSaver = new StorageSaver(STORAGE_FILE_NAME);
+        appContainer.setStorageSaver(storageSaver);
+
         StorageReader storageReader = new StorageReader(STORAGE_FILE_NAME);
         Collection<Person> collection = storageReader.read();
 
         CollectionManager collectionManager = new CollectionManager(collection);
         appContainer.setCollectionManager(collectionManager);
-
-        StorageSaver storageSaver = new StorageSaver(STORAGE_FILE_NAME);
-        appContainer.setStorageSaver(storageSaver);
     }
 }

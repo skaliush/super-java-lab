@@ -5,9 +5,9 @@ import ru.skaliush.superlab.client.validation.rules.LongRule;
 import ru.skaliush.superlab.client.validation.rules.Rule;
 import ru.skaliush.superlab.common.models.Person;
 import ru.skaliush.superlab.common.models.dto.PersonDTO;
-import ru.skaliush.superlab.common.request.ActionAlias;
-import ru.skaliush.superlab.common.request.Request;
-import ru.skaliush.superlab.common.request.Response;
+import ru.skaliush.superlab.common.network.ActionAlias;
+import ru.skaliush.superlab.common.network.Request;
+import ru.skaliush.superlab.common.network.Response;
 
 import java.util.List;
 

@@ -1,8 +1,8 @@
 package ru.skaliush.superlab.server.app;
 
-import ru.skaliush.superlab.common.request.ActionAlias;
-import ru.skaliush.superlab.common.request.Request;
-import ru.skaliush.superlab.common.request.Response;
+import ru.skaliush.superlab.common.network.ActionAlias;
+import ru.skaliush.superlab.common.network.Request;
+import ru.skaliush.superlab.common.network.Response;
 import ru.skaliush.superlab.server.actions.*;
 
 import java.util.Map;

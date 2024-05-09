@@ -43,10 +43,11 @@ public class ExecuteScriptCommand extends Command {
             }
         } catch (IOException e) {
             throw new RuntimeException(e);
+        } catch (Throwable e) {
+            this.app.setPromptReader(oldPromptReader);
+            this.app.getScriptsStack().removeLast();
+            throw e;
         }
-
-        this.app.setPromptReader(oldPromptReader);
-        this.app.getScriptsStack().removeLast();
     }
 
     public String getDescription() {

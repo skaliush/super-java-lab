@@ -1,4 +1,4 @@
-package ru.skaliush.superlab.common.request;
+package ru.skaliush.superlab.common.network;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
@@ -16,7 +16,6 @@ public class RequestSender {
     }
 
     public Response send(Request request) {
-        // обрабатывать недоступность сервера
         try (
                 Socket socket = new Socket(serverHost, serverPort);
                 DataOutputStream outputStream = new DataOutputStream(socket.getOutputStream());
@@ -24,10 +23,10 @@ public class RequestSender {
         ) {
             String serializedRequest = this.serializer.serializeToString(request);
             outputStream.writeUTF(serializedRequest);
-            String serializedResponse = inputStream.readUTF(); // обрабатывать плохой ответ сервера
+            String serializedResponse = inputStream.readUTF();
             return (Response) this.serializer.deserializeFromString(serializedResponse);
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            throw new ServerUnavailableException();
         }
     }
 

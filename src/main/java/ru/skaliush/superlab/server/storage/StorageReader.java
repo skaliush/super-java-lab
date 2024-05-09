@@ -5,9 +5,13 @@ import ru.skaliush.superlab.common.models.Country;
 import ru.skaliush.superlab.common.models.Location;
 import ru.skaliush.superlab.common.models.Person;
 import ru.skaliush.superlab.common.models.dto.PersonDTO;
+import ru.skaliush.superlab.server.app.ServerAppContainer;
 import ru.skaliush.superlab.server.storage.csv.CsvParser;
 import ru.skaliush.superlab.server.storage.csv.Row;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Path;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeParseException;
 import java.util.Collection;
@@ -19,6 +23,20 @@ public class StorageReader {
 
     public StorageReader(String fileName) {
         this.fileName = fileName;
+        createFileIsNotExists(fileName);
+    }
+
+    private static void createFileIsNotExists(String fileName) {
+        File file = Path.of(fileName).toFile();
+        if (!file.exists()) {
+            try {
+                file.createNewFile();
+                StorageSaver saver = ServerAppContainer.getInstance().getStorageSaver();
+                saver.save(new HashSet<>());
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
     }
 
     private final List<String> fieldNames = List.of("id", "name", "creationDate", "height", "eyeColor", "hairColor", "nationality", "location_name", "location_x", "location_y", "location_z");

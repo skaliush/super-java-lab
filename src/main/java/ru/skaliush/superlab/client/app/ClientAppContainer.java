@@ -1,7 +1,7 @@
 package ru.skaliush.superlab.client.app;
 
 import ru.skaliush.superlab.client.resolver.CommandResolver;
-import ru.skaliush.superlab.common.request.RequestSender;
+import ru.skaliush.superlab.common.network.RequestSender;
 
 import java.io.File;
 import java.util.ArrayDeque;
