@@ -38,6 +38,9 @@ public class Person implements Comparable<Person>, Serializable {
     }
 
     public int compareTo(Person o) {
+        if (o == null) {
+            return -1;
+        }
         return height.compareTo(o.height);
     }
 

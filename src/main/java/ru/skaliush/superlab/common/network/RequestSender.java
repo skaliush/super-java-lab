@@ -26,7 +26,7 @@ public class RequestSender {
             String serializedResponse = inputStream.readUTF();
             return (Response) this.serializer.deserializeFromString(serializedResponse);
         } catch (IOException e) {
-            throw new ServerUnavailableException();
+            throw new ServerUnavailableException(e.getMessage());
         }
     }
 

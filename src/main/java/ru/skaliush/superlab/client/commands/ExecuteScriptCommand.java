@@ -48,6 +48,8 @@ public class ExecuteScriptCommand extends Command {
             this.app.getScriptsStack().removeLast();
             throw e;
         }
+        this.app.setPromptReader(oldPromptReader);
+        this.app.getScriptsStack().removeLast();
     }
 
     public String getDescription() {

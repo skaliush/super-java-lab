@@ -29,6 +29,7 @@ public class ConsolePromptHandler {
                         }
                     } catch (ServerUnavailableException e) {
                         ResponseWriter.write("На данный момент сервер недоступен. Попробуйте позже.");
+                        System.err.println(e.getMessage());
                     }
                 } else {
                     ResponseWriter.write("Введите нужную команду");
