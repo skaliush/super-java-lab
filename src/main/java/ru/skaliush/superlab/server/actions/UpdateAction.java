@@ -9,8 +9,6 @@ public class UpdateAction extends Action<Person> {
     public Person execute(Request request) {
         PersonDTO personDTO = (PersonDTO) request.getData();
         CollectionManager collectionManager = this.app.getCollectionManager();
-        Person person = collectionManager.updatePersonById(personDTO.getId(), personDTO);
-        app.save();
-        return person;
+        return collectionManager.updatePersonById(personDTO.getId(), personDTO);
     }
 }

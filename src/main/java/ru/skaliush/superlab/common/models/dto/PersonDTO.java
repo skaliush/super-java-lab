@@ -66,7 +66,7 @@ public class PersonDTO implements Serializable {
 
     @Override
     public String toString() {
-        return "PersonForm{" +
+        return "PersonDTO{" +
                 "name='" + name + '\'' +
                 ", height=" + height +
                 ", eyeColor=" + eyeColor +

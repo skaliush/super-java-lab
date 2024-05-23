@@ -2,15 +2,13 @@ package ru.skaliush.superlab.server;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import ru.skaliush.superlab.common.models.Person;
 import ru.skaliush.superlab.common.network.Request;
 import ru.skaliush.superlab.common.network.Response;
 import ru.skaliush.superlab.common.network.Serializer;
 import ru.skaliush.superlab.server.app.Router;
 import ru.skaliush.superlab.server.app.ServerAppContainer;
 import ru.skaliush.superlab.server.collection.CollectionManager;
-import ru.skaliush.superlab.server.storage.StorageReader;
-import ru.skaliush.superlab.server.storage.StorageSaver;
+import ru.skaliush.superlab.server.collection.PostgresCollectionManager;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
@@ -18,15 +16,19 @@ import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.util.Collection;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 
 public class ServerMain {
     public static final int SERVER_PORT = 8888;
-    public static final String STORAGE_FILE_NAME = "people.csv";
+
+    public static final String DB_URL = "jdbc:postgresql://localhost:5432/misha";
+    public static final String DB_USER = "postgres";
+    public static final String DB_PASSWORD = "root";
 
     public static void main(String[] args) {
-        initAppContainer();
-        runServer();
+        openDB(ServerMain::runServer);
     }
 
     private static void runServer() {
@@ -60,16 +62,18 @@ public class ServerMain {
         logger.info("[Server] end");
     }
 
-    private static void initAppContainer() {
-        ServerAppContainer appContainer = ServerAppContainer.getInstance();
+    private static void openDB(Runnable runnable) {
+        try (Connection connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD)) {
+            ServerAppContainer appContainer = ServerAppContainer.getInstance();
 
-        StorageSaver storageSaver = new StorageSaver(STORAGE_FILE_NAME);
-        appContainer.setStorageSaver(storageSaver);
+            appContainer.setConnection(connection);
 
-        StorageReader storageReader = new StorageReader(STORAGE_FILE_NAME);
-        Collection<Person> collection = storageReader.read();
+            CollectionManager collectionManager = new PostgresCollectionManager(connection);
+            appContainer.setCollectionManager(collectionManager);
 
-        CollectionManager collectionManager = new CollectionManager(collection);
-        appContainer.setCollectionManager(collectionManager);
+            runnable.run();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

@@ -4,8 +4,6 @@ import ru.skaliush.superlab.common.network.Request;
 
 public class ClearAction extends Action<Integer> {
     public Integer execute(Request request) {
-        int count = this.app.getCollectionManager().clearCollection();
-        app.save();
-        return count;
+        return this.app.getCollectionManager().clearCollection();
     }
 }

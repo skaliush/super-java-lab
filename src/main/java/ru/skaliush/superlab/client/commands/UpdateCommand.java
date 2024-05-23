@@ -21,8 +21,11 @@ public class UpdateCommand extends Command {
         Request request = new Request(ActionAlias.UPDATE, personDto);
         Response response = this.app.getRequestSender().send(request);
         Person person = (Person) response.getData();
-        ResponseWriter.write("Чел обновлен - " + person);
-        // что если такого ID нет?
+        if (person != null) {
+            ResponseWriter.write("Чел обновлен - " + person);
+        } else {
+            ResponseWriter.write("Такого ID нет");
+        }
     }
 
     public String getDescription() {

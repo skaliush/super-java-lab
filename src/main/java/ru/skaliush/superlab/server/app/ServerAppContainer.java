@@ -3,11 +3,15 @@ package ru.skaliush.superlab.server.app;
 import ru.skaliush.superlab.server.collection.CollectionManager;
 import ru.skaliush.superlab.server.storage.StorageSaver;
 
+import java.sql.Connection;
+
 public class ServerAppContainer {
     private static ServerAppContainer instance;
 
     private CollectionManager collectionManager;
     private StorageSaver storageSaver;
+
+    private Connection connection;
 
     private ServerAppContainer() {
     }
@@ -37,5 +41,13 @@ public class ServerAppContainer {
 
     public void save() {
         getStorageSaver().save(getCollectionManager().getCollection());
+    }
+
+    public Connection getConnection() {
+        return connection;
+    }
+
+    public void setConnection(Connection connection) {
+        this.connection = connection;
     }
 }

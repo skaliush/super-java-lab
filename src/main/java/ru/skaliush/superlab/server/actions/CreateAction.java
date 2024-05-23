@@ -9,8 +9,6 @@ public class CreateAction extends Action<Person> {
     public Person execute(Request request) {
         PersonDTO personDTO = (PersonDTO) request.getData();
         CollectionManager collectionManager = this.app.getCollectionManager();
-        Person person = collectionManager.createPerson(personDTO);
-        app.save();
-        return person;
+        return collectionManager.createPerson(personDTO);
     }
 }

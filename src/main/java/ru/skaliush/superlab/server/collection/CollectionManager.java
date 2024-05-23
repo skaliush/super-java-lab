@@ -4,78 +4,21 @@ import ru.skaliush.superlab.common.models.Person;
 import ru.skaliush.superlab.common.models.dto.PersonDTO;
 
 import java.util.Collection;
-import java.util.Comparator;
-import java.util.HashSet;
-import java.util.stream.Collectors;
 
-public class CollectionManager {
-    private Collection<Person> collection;
+public interface CollectionManager {
+    Collection<Person> getCollection();
 
-    private long lastId = 0;
+    Person createPerson(PersonDTO personDTO);
 
-    public CollectionManager() {
-        this.collection = new HashSet<>();
-    }
+    Person updatePersonById(Long id, PersonDTO personDTO);
 
-    public CollectionManager(Collection<Person> collection) {
-        this.collection = collection;
-        collection.stream().max(Comparator.comparing(Person::getId))
-                .ifPresent(person -> lastId = person.getId());
-    }
+    boolean removePersonById(Long id);
 
-    public Collection<Person> getCollection() {
-        return new HashSet<>(collection);
-    }
+    int clearCollection();
 
-    public Person createPerson(PersonDTO personDTO) {
-        Person person = new Person(generateId(), personDTO);
-        collection.add(person);
-        return person;
-    }
+    void addPersonIfMin(Person person);
 
-    public Person updatePersonById(Long id, PersonDTO personDTO) {
-        removePersonById(id);
-        Person person = new Person(id, personDTO);
-        collection.add(person);
-        return person;
-    }
+    int removeGreaterThanHeight(int height);
 
-    public boolean removePersonById(Long id) {
-        int oldSize = collection.size();
-        collection = collection.stream().filter(person -> !person.getId().equals(id)).collect(Collectors.toSet());
-        return oldSize > collection.size();
-    }
-
-    public int clearCollection() {
-        int count = collection.size();
-        collection = new HashSet<>();
-        return count;
-    }
-
-    public void addPersonIfMin(Person person) {
-        Person minPerson = collection.stream().min(Person::compareTo).orElse(null);
-        if (person.compareTo(minPerson) < 0) {
-            collection.add(person);
-        }
-    }
-
-    public int removeGreaterThanHeight(int height) {
-        int oldSize = collection.size();
-        collection = collection.stream().filter(person -> person.getHeight() <= height).collect(Collectors.toSet());
-        return oldSize - collection.size();
-    }
-
-    public int removeLowerThanHeight(int height) {
-        int oldSize = collection.size();
-        collection = collection.stream().filter(person -> person.getHeight() >= height).collect(Collectors.toSet());
-        return oldSize - collection.size();
-    }
-
-    private Long generateId() {
-        return ++lastId;
-    }
-
-    public void setLastId(long lastId) {
-        this.lastId = lastId;
-    }
+    int removeLowerThanHeight(int height);
 }

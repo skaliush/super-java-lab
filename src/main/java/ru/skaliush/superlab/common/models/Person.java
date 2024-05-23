@@ -15,26 +15,26 @@ public class Person implements Comparable<Person>, Serializable {
     private final Country nationality;
     private final Location location;
 
-    public Person(Long id, PersonDTO form) {
+    public Person(Long id, PersonDTO dto) {
         this.id = id;
         this.creationDate = ZonedDateTime.now();
-        this.name = form.getName();
-        this.height = form.getHeight();
-        this.eyeColor = form.getEyeColor();
-        this.hairColor = form.getHairColor();
-        this.nationality = form.getNationality();
-        this.location = form.getLocation();
+        this.name = dto.getName();
+        this.height = dto.getHeight();
+        this.eyeColor = dto.getEyeColor();
+        this.hairColor = dto.getHairColor();
+        this.nationality = dto.getNationality();
+        this.location = dto.getLocation();
     }
 
-    public Person(Long id, PersonDTO form, ZonedDateTime creationDate) {
+    public Person(Long id, PersonDTO dto, ZonedDateTime creationDate) {
         this.id = id;
         this.creationDate = creationDate;
-        this.name = form.getName();
-        this.height = form.getHeight();
-        this.eyeColor = form.getEyeColor();
-        this.hairColor = form.getHairColor();
-        this.nationality = form.getNationality();
-        this.location = form.getLocation();
+        this.name = dto.getName();
+        this.height = dto.getHeight();
+        this.eyeColor = dto.getEyeColor();
+        this.hairColor = dto.getHairColor();
+        this.nationality = dto.getNationality();
+        this.location = dto.getLocation();
     }
 
     public int compareTo(Person o) {
