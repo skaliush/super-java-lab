@@ -1,6 +1,7 @@
 package ru.skaliush.superlab.client.app;
 
 import ru.skaliush.superlab.client.resolver.CommandResolver;
+import ru.skaliush.superlab.common.models.User;
 import ru.skaliush.superlab.common.network.RequestSender;
 
 import java.io.File;
@@ -17,6 +18,8 @@ public class ClientAppContainer {
 
     private final Deque<File> scriptsStack = new ArrayDeque<>();
 
+    private User user;
+
     private ClientAppContainer() {
     }
 
@@ -25,6 +28,18 @@ public class ClientAppContainer {
             instance = new ClientAppContainer();
         }
         return instance;
+    }
+
+    public boolean isLoggedIn() {
+        return user != null;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public LineReader getPromptReader() {

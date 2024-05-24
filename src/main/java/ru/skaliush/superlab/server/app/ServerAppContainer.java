@@ -1,15 +1,18 @@
 package ru.skaliush.superlab.server.app;
 
-import ru.skaliush.superlab.server.collection.CollectionManager;
+import ru.skaliush.superlab.server.collection.PostgresCollectionManager;
 import ru.skaliush.superlab.server.storage.StorageSaver;
+import ru.skaliush.superlab.server.user.UserManager;
 
 import java.sql.Connection;
 
 public class ServerAppContainer {
     private static ServerAppContainer instance;
 
-    private CollectionManager collectionManager;
+    private PostgresCollectionManager collectionManager;
     private StorageSaver storageSaver;
+
+    private UserManager userManager;
 
     private Connection connection;
 
@@ -23,11 +26,11 @@ public class ServerAppContainer {
         return instance;
     }
 
-    public CollectionManager getCollectionManager() {
+    public PostgresCollectionManager getCollectionManager() {
         return collectionManager;
     }
 
-    public void setCollectionManager(CollectionManager collectionManager) {
+    public void setCollectionManager(PostgresCollectionManager collectionManager) {
         this.collectionManager = collectionManager;
     }
 
@@ -49,5 +52,13 @@ public class ServerAppContainer {
 
     public void setConnection(Connection connection) {
         this.connection = connection;
+    }
+
+    public UserManager getUserManager() {
+        return userManager;
+    }
+
+    public void setUserManager(UserManager userManager) {
+        this.userManager = userManager;
     }
 }

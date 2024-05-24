@@ -16,6 +16,8 @@ public class PersonDTO implements Serializable {
     private Country nationality;
     private Location location;
 
+    private String ownerLogin;
+
     public void setName(String name) {
         this.name = name;
     }
@@ -82,5 +84,13 @@ public class PersonDTO implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getOwnerLogin() {
+        return ownerLogin;
+    }
+
+    public void setOwnerLogin(String ownerLogin) {
+        this.ownerLogin = ownerLogin;
     }
 }

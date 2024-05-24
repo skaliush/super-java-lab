@@ -9,6 +9,8 @@ import java.util.Map;
 
 public class Router {
     private final Map<ActionAlias, Action<?>> routeList = Map.of(
+            ActionAlias.LOGIN, new LoginAction(),
+            ActionAlias.REGISTER, new RegisterAction(),
             ActionAlias.SHOW, new ShowAction(),
             ActionAlias.ADD, new CreateAction(),
             ActionAlias.UPDATE, new UpdateAction(),

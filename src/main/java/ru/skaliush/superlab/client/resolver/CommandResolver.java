@@ -1,5 +1,7 @@
 package ru.skaliush.superlab.client.resolver;
 
+import ru.skaliush.superlab.client.app.ClientAppContainer;
+import ru.skaliush.superlab.client.app.ResponseWriter;
 import ru.skaliush.superlab.client.commands.*;
 import ru.skaliush.superlab.client.resolver.exceptions.ArgumentMissedException;
 import ru.skaliush.superlab.client.resolver.exceptions.CommandNotFoundException;
@@ -10,16 +12,18 @@ import ru.skaliush.superlab.client.validation.Validator;
 import java.util.Map;
 
 public class CommandResolver {
-    private final Map<String, Command> commands = Map.of(
-            "help", new HelpCommand(),
-            "info", new InfoCommand(),
-            "add", new AddCommand(),
-            "show", new ShowCommand(),
-            "execute", new ExecuteScriptCommand(),
-            "remove", new RemoveByIdCommand(),
-            "update", new UpdateCommand(),
-            "clear", new ClearCommand(),
-            "exit", new ExitCommand()
+    private final Map<String, Command> commands = Map.ofEntries(
+            Map.entry("login", new LoginCommand()),
+            Map.entry("register", new RegisterCommand()),
+            Map.entry("help", new HelpCommand()),
+            Map.entry("info", new InfoCommand()),
+            Map.entry("add", new AddCommand()),
+            Map.entry("show", new ShowCommand()),
+            Map.entry("execute", new ExecuteScriptCommand()),
+            Map.entry("remove", new RemoveByIdCommand()),
+            Map.entry("update", new UpdateCommand()),
+            Map.entry("clear", new ClearCommand()),
+            Map.entry("exit", new ExitCommand())
     );
 
     public void resolve(String prompt) {
@@ -43,8 +47,12 @@ public class CommandResolver {
                     throw new InvalidArgumentException(argumentName, e);
                 }
             }
-            command.exec(argument);
-            // if collection.hasChanged(): collecstion.save()
+            ClientAppContainer appContainer = ClientAppContainer.getInstance();
+            if (command.needToAuthorize() && !appContainer.isLoggedIn()) {
+                ResponseWriter.write("Для начала необходимо войти в аккаунт");
+            } else {
+                command.exec(argument);
+            }
         } else {
             throw new CommandNotFoundException(commandAlias);
         }

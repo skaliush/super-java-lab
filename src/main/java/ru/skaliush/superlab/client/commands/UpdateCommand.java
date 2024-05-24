@@ -22,7 +22,11 @@ public class UpdateCommand extends Command {
         Response response = this.app.getRequestSender().send(request);
         Person person = (Person) response.getData();
         if (person != null) {
-            ResponseWriter.write("Чел обновлен - " + person);
+            if (person.getOwnerLogin().equals(app.getUser().getLogin())) {
+                ResponseWriter.write("Чел обновлен - " + person);
+            } else {
+                ResponseWriter.write("Это не ваш чел");
+            }
         } else {
             ResponseWriter.write("Такого ID нет");
         }

@@ -26,4 +26,8 @@ public abstract class Command {
     public List<Rule> getArgumentValidationRules() {
         return List.of();
     }
+
+    public boolean needToAuthorize() {
+        return true;
+    }
 }

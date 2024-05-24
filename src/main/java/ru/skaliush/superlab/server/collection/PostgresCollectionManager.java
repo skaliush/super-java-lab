@@ -1,16 +1,13 @@
 package ru.skaliush.superlab.server.collection;
 
-import ru.skaliush.superlab.common.models.Color;
-import ru.skaliush.superlab.common.models.Country;
-import ru.skaliush.superlab.common.models.Location;
-import ru.skaliush.superlab.common.models.Person;
+import ru.skaliush.superlab.common.models.*;
 import ru.skaliush.superlab.common.models.dto.PersonDTO;
 
 import java.sql.*;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.Collection;
-import java.util.HashSet;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class PostgresCollectionManager implements CollectionManager {
     private final Connection connection;
@@ -24,7 +21,7 @@ public class PostgresCollectionManager implements CollectionManager {
 
     private Collection<Person> loadCollection() {
         try {
-            Collection<Person> result = new HashSet<>();
+            Collection<Person> result = ConcurrentHashMap.newKeySet();
             ResultSet resultSet = connection.createStatement().executeQuery("select * from persons");
             while (resultSet.next()) {
                 Person person = mapResultSetToPerson(resultSet);
@@ -42,8 +39,8 @@ public class PostgresCollectionManager implements CollectionManager {
 
     public Person createPerson(PersonDTO personDTO) {
         try {
-            PreparedStatement ps = connection.prepareStatement("insert into persons (name, height, eye_color, hair_color, nationality, location_x, location_y, location_z, location_name) " +
-                    "values (?, ?, ?, ?, ?, ?, ?, ?, ?) returning *");
+            PreparedStatement ps = connection.prepareStatement("insert into persons (name, height, eye_color, hair_color, nationality, location_x, location_y, location_z, location_name, owner_login) " +
+                    "values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?) returning *");
             ps.setString(1, personDTO.getName());
             ps.setInt(2, personDTO.getHeight());
             ps.setInt(3, personDTO.getEyeColor().ordinal());
@@ -61,11 +58,26 @@ public class PostgresCollectionManager implements CollectionManager {
                 ps.setNull(8, Types.REAL);
                 ps.setNull(9, Types.VARCHAR);
             }
+            ps.setString(10, personDTO.getOwnerLogin());
             ResultSet resultSet = ps.executeQuery();
             resultSet.next();
             Person person = mapResultSetToPerson(resultSet);
             collection.add(person);
             return person;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public Person getPersonById(Long id) {
+        try {
+            PreparedStatement ps1 = connection.prepareStatement("select * from persons where id = ?");
+            ps1.setLong(1, id);
+            ResultSet resultSet1 = ps1.executeQuery();
+            if (resultSet1.next()) {
+                return mapResultSetToPerson(resultSet1);
+            }
+            return null;
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -122,7 +134,24 @@ public class PostgresCollectionManager implements CollectionManager {
             resultSet.next();
             int count = resultSet.getInt("count");
             connection.createStatement().execute("truncate persons");
-            collection = new HashSet<>();
+            collection = ConcurrentHashMap.newKeySet();
+            return count;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public int clearCollection(User user) {
+        try {
+            PreparedStatement ps1 = connection.prepareStatement("select count(*) from persons where owner_login = ?");
+            ps1.setString(1, user.getLogin());
+            ResultSet resultSet = ps1.executeQuery();
+            resultSet.next();
+            int count = resultSet.getInt("count");
+            PreparedStatement ps2 = connection.prepareStatement("delete from persons where owner_login = ?");
+            ps2.setString(1, user.getLogin());
+            ps2.execute();
+            collection = loadCollection();
             return count;
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -155,6 +184,7 @@ public class PostgresCollectionManager implements CollectionManager {
                 resultSet.getFloat("location_z"),
                 resultSet.getString("location_name")
         ));
+        personDTO.setOwnerLogin(resultSet.getString("owner_login"));
         LocalDateTime creationDate = resultSet.getTimestamp("creation_date").toLocalDateTime();
         return new Person(id, personDTO, creationDate.atZone(ZoneId.systemDefault()));
     }

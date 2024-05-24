@@ -23,4 +23,8 @@ public class HelpCommand extends Command {
     public String getDescription() {
         return "вывести справку по доступным командам";
     }
+    
+    public boolean needToAuthorize() {
+        return false;
+    }
 }

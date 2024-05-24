@@ -10,4 +10,8 @@ public class ExitCommand extends Command {
     public String getDescription() {
         return "завершить программу (без сохранения в файл)";
     }
+    
+    public boolean needToAuthorize() {
+        return false;
+    }
 }

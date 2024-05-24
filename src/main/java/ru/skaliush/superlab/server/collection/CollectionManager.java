@@ -10,6 +10,8 @@ public interface CollectionManager {
 
     Person createPerson(PersonDTO personDTO);
 
+    Person getPersonById(Long id);
+
     Person updatePersonById(Long id, PersonDTO personDTO);
 
     boolean removePersonById(Long id);

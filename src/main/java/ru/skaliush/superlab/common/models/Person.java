@@ -14,6 +14,7 @@ public class Person implements Comparable<Person>, Serializable {
     private final Color hairColor;
     private final Country nationality;
     private final Location location;
+    private String ownerLogin;
 
     public Person(Long id, PersonDTO dto) {
         this.id = id;
@@ -24,6 +25,7 @@ public class Person implements Comparable<Person>, Serializable {
         this.hairColor = dto.getHairColor();
         this.nationality = dto.getNationality();
         this.location = dto.getLocation();
+        this.ownerLogin = dto.getOwnerLogin();
     }
 
     public Person(Long id, PersonDTO dto, ZonedDateTime creationDate) {
@@ -35,6 +37,7 @@ public class Person implements Comparable<Person>, Serializable {
         this.hairColor = dto.getHairColor();
         this.nationality = dto.getNationality();
         this.location = dto.getLocation();
+        this.ownerLogin = dto.getOwnerLogin();
     }
 
     public int compareTo(Person o) {
@@ -75,7 +78,7 @@ public class Person implements Comparable<Person>, Serializable {
     public Location getLocation() {
         return location;
     }
-
+    
     public String toString() {
         return "Person{" +
                 "id=" + id +
@@ -86,7 +89,16 @@ public class Person implements Comparable<Person>, Serializable {
                 ", hairColor=" + hairColor +
                 ", nationality=" + nationality +
                 ", location=" + location +
+                ", ownerLogin='" + ownerLogin + '\'' +
                 '}';
+    }
+
+    public String getOwnerLogin() {
+        return ownerLogin;
+    }
+
+    public void setOwnerLogin(String ownerLogin) {
+        this.ownerLogin = ownerLogin;
     }
 }
 

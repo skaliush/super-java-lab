@@ -7,8 +7,8 @@ import ru.skaliush.superlab.common.network.Response;
 import ru.skaliush.superlab.common.network.Serializer;
 import ru.skaliush.superlab.server.app.Router;
 import ru.skaliush.superlab.server.app.ServerAppContainer;
-import ru.skaliush.superlab.server.collection.CollectionManager;
 import ru.skaliush.superlab.server.collection.PostgresCollectionManager;
+import ru.skaliush.superlab.server.user.UserManager;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
@@ -86,8 +86,10 @@ public class ServerMain {
             Connection connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
             ServerAppContainer appContainer = ServerAppContainer.getInstance();
             appContainer.setConnection(connection);
-            CollectionManager collectionManager = new PostgresCollectionManager(connection);
+            PostgresCollectionManager collectionManager = new PostgresCollectionManager(connection);
             appContainer.setCollectionManager(collectionManager);
+            UserManager userManager = new UserManager(connection);
+            appContainer.setUserManager(userManager);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

@@ -11,6 +11,7 @@ public class AddCommand extends Command {
     public void exec(String argument) {
         PersonForm form = new PersonForm();
         PersonDTO personDto = form.askPerson();
+        personDto.setOwnerLogin(app.getUser().getLogin());
         ResponseWriter.write(personDto);
         Request request = new Request(ActionAlias.ADD, personDto);
         Response response = this.app.getRequestSender().send(request);

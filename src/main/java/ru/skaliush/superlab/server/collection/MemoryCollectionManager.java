@@ -33,6 +33,11 @@ public class MemoryCollectionManager implements CollectionManager {
         return person;
     }
 
+    @Override
+    public Person getPersonById(Long id) {
+        return null;
+    }
+
     public Person updatePersonById(Long id, PersonDTO personDTO) {
         removePersonById(id);
         Person person = new Person(id, personDTO);
