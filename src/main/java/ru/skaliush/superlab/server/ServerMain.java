@@ -19,6 +19,9 @@ import java.net.Socket;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ForkJoinPool;
 
 public class ServerMain {
     public static final int SERVER_PORT = 8888;
@@ -28,50 +31,63 @@ public class ServerMain {
     public static final String DB_PASSWORD = "root";
 
     public static void main(String[] args) {
-        openDB(ServerMain::runServer);
+        connectDB();
+        runServer();
     }
 
     private static void runServer() {
+        ExecutorService cachedThreadPool = Executors.newCachedThreadPool();
+        ExecutorService forkJoinPool = new ForkJoinPool();
         Logger logger = LogManager.getLogger("server");
         Serializer serializer = new Serializer();
         Router router = new Router();
         logger.info("[Server] start");
-        while (true) {
-            try (
-                    ServerSocket serverSocket = new ServerSocket(SERVER_PORT);
-                    Socket socket = serverSocket.accept();
-                    DataOutputStream outputStream = new DataOutputStream(socket.getOutputStream());
-                    DataInputStream inputStream = new DataInputStream(socket.getInputStream())
-            ) {
-                InetSocketAddress socketAddress = (InetSocketAddress) socket.getRemoteSocketAddress();
-                String ipString = socketAddress.getHostString() + ":" + socketAddress.getPort();
-                logger.info("[Server] the client has connected. IP: " + ipString);
-                String requestString = inputStream.readUTF();
-                Request request = (Request) serializer.deserializeFromString(requestString);
-                logger.info("[Server] client request:");
-                logger.info("    " + request);
-                Response response = router.resolve(request);
-                outputStream.writeUTF(serializer.serializeToString(response));
-                logger.info("[Server] server response:");
-                logger.info("    " + response);
+        cachedThreadPool.submit(() -> {
+            try (ServerSocket serverSocket = new ServerSocket(SERVER_PORT)) {
+                while (true) {
+                    try {
+                        Socket socket = serverSocket.accept();
+                        DataInputStream inputStream = new DataInputStream(socket.getInputStream());
+                        InetSocketAddress socketAddress = (InetSocketAddress) socket.getRemoteSocketAddress();
+                        String ipString = socketAddress.getHostString() + ":" + socketAddress.getPort();
+                        logger.info("[Server] the client has connected. IP: " + ipString);
+                        String requestString = inputStream.readUTF();
+                        Request request = (Request) serializer.deserializeFromString(requestString);
+                        logger.info("[Server] client request:");
+                        logger.info("    " + request);
+                        forkJoinPool.submit(() -> {
+                            Response response = router.resolve(request);
+                            Thread thread = new Thread(() -> {
+                                try {
+                                    DataOutputStream outputStream = new DataOutputStream(socket.getOutputStream());
+                                    outputStream.writeUTF(serializer.serializeToString(response));
+                                    socket.close();
+                                    logger.info("[Server] server response:");
+                                    logger.info("    " + response);
+                                } catch (IOException e) {
+                                    throw new RuntimeException(e);
+                                }
+                            });
+                            thread.start();
+                        });
+                    } catch (IOException e) {
+                        logger.info(e.getMessage());
+                        break;
+                    }
+                }
             } catch (IOException e) {
-                logger.info(e.getMessage());
-                break;
+                throw new RuntimeException(e);
             }
-        }
-        logger.info("[Server] end");
+        });
     }
 
-    private static void openDB(Runnable runnable) {
-        try (Connection connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD)) {
+    private static void connectDB() {
+        try {
+            Connection connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
             ServerAppContainer appContainer = ServerAppContainer.getInstance();
-
             appContainer.setConnection(connection);
-
             CollectionManager collectionManager = new PostgresCollectionManager(connection);
             appContainer.setCollectionManager(collectionManager);
-
-            runnable.run();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
